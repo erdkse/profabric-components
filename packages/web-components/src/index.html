@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
+    <link rel="stylesheet" href="/build/web-components.css" />
+
+    <script type="module" src="/build/web-components.esm.js"></script>
+    <script nomodule src="/build/web-components.js"></script>
+    <script>
+      window.PF = {
+        config: {
+          mode: 'bs5',
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <h5>Small Buttons</h5>
+        <div class="col">
+          <form>
+            <pf-button block type="submit" size="small">Primary</pf-button>
+          </form>
+        </div>
+        <div class="col">
+          <pf-button theme="secondary" block size="small">Secondary</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="success" block size="small">Success</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="danger" block size="small">Danger</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="warning" block size="small">Warning</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="info" block size="small">Info</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="light" block size="small">Light</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="dark" block size="small">Dark</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="link" block size="small">Link</pf-button>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <h5>Default Buttons</h5>
+        <div class="col">
+          <pf-button block>Primary</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="secondary" block>Secondary</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="success" block>Success</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="danger" block>Danger</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="warning" block>Warning</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="info" block>Info</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="light" block>Light</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="dark" block>Dark</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="link" block>Link</pf-button>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <h5>Large Buttons</h5>
+        <div class="col">
+          <pf-button block size="large">Primary</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="secondary" block size="large">Secondary</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="success" block size="large">Success</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="danger" block size="large">Danger</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="warning" block size="large">Warning</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="info" block size="large">Info</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="light" block size="large">Light</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="dark" block size="large" disabled>Dark</pf-button>
+        </div>
+        <div class="col">
+          <pf-button theme="link" block size="large" disabled>Link</pf-button>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <h5>Select</h5>
+        <div class="col">
+          <pf-select size="small" label="Small" value="2"></pf-select>
+        </div>
+        <div class="col">
+          <pf-select value="3" label="Medium"></pf-select>
+        </div>
+        <div class="col">
+          <pf-select value="1" size="large" label="Large" disabled></pf-select>
+        </div>
+      </div>
+    </div>
+    <script>
+      const buttons = document.querySelectorAll('pf-button');
+      buttons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          console.log('clicked');
+          button.loading = true;
+          setTimeout(() => {
+            button.loading = false;
+          }, 3000);
+        });
+      });
+    </script>
+    <script>
+      const selections = document.querySelectorAll('pf-select');
+      selections.forEach((select) => {
+        select.options = [
+          { value: '1', label: 'One' },
+          { value: '2', label: 'Two' },
+          { value: '3', label: 'Three' },
+          { value: '4', label: 'Four' },
+        ];
+
+        select.addEventListener('change', (event) => {
+          console.log('event', event);
+          console.log('value', event.target.value);
+        });
+      });
+    </script>
+  </body>
+</html>
