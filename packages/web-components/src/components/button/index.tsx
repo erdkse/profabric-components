@@ -14,14 +14,14 @@ export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
 })
 export class Button {
   @Element() el: HTMLElement;
-  @Prop() theme: THEMES | string = 'primary';
-  @Prop() size: SIZES = 'default';
-  @Prop({ reflect: true }) mode: MODES;
+  @Prop({ reflect: true, mutable: true }) theme: THEMES | string = 'primary';
+  @Prop({ reflect: true, mutable: true }) size: SIZES = 'default';
+  @Prop({ reflect: true, mutable: true }) mode: MODES;
   @Prop({ reflect: true, mutable: true }) type: BUTTON_TYPES = 'button';
-  @Prop() class: string = '';
-  @Prop() disabled: boolean = false;
-  @Prop() loading: boolean = false;
-  @Prop() block: boolean = false;
+  @Prop({ reflect: true, mutable: true }) class: string = '';
+  @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
+  @Prop({ reflect: true, mutable: true }) loading: boolean = false;
+  @Prop({ reflect: true, mutable: true }) block: boolean = false;
   @Listen('click', { capture: true })
   onClick(event: Event) {
     if (this.disabled || this.loading) {
@@ -66,7 +66,18 @@ export class Button {
       );
     }
     return (
-      <Host style={{ width: this.block ? '100%' : 'inherit' }}>
+      <Host
+        style={{
+          width: this.block ? '100%' : 'inherit',
+          display: 'block',
+          pointerEvents:
+            this.disabled || this.loading ? 'none !important' : 'inherit',
+          cursor:
+            this.disabled || this.loading
+              ? 'not-allowed !important'
+              : 'inherit',
+        }}
+      >
         <button
           type={this.type}
           class={{
@@ -76,7 +87,15 @@ export class Button {
             'btn-lg': this.size === 'large',
           }}
           disabled={this.disabled || this.loading}
-          style={{ width: this.block ? '100%' : 'inherit' }}
+          style={{
+            width: this.block ? '100%' : 'inherit',
+            pointerEvents:
+              this.disabled || this.loading ? 'none !important' : 'inherit',
+            cursor:
+              this.disabled || this.loading
+                ? 'not-allowed !important'
+                : 'inherit',
+          }}
         >
           {innerTemplate}
         </button>

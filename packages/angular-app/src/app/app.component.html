@@ -1,1 +1,16 @@
-<pf-button>Hello</pf-button>
+<div class="container mt-5">
+  <h1 class="mb-4">Buttons</h1>
+  <div *ngFor="let chunk of components" class="row gx-2 mb-3">
+    <pf-button
+      *ngFor="let c of chunk"
+      class="col"
+      block
+      [theme]="c.theme"
+      [size]="c.size"
+      [loading]="c.loading"
+      (click)="handleClick(c)"
+    >
+      {{ c.text }}
+    </pf-button>
+  </div>
+</div>

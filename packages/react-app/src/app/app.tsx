@@ -35,26 +35,33 @@ export function App() {
       size: 'large',
     })),
   ]);
+  const [timeoutID, setTimeoutID] = useState<NodeJS.Timeout | null>(null);
 
   const handleClick = (item: any) => {
+    if (timeoutID) {
+      clearTimeout(timeoutID);
+    }
+
     setComponents(
       components.map((chunk) =>
         chunk.map((c) => ({ ...c, loading: _.isEqual(c, item) }))
       )
     );
 
-    setTimeout(() => {
+    const tID: NodeJS.Timeout = setTimeout(() => {
       setComponents(
         components.map((chunk) => chunk.map((c) => ({ ...c, loading: false })))
       );
     }, 3000);
+
+    setTimeoutID(tID);
   };
 
   return (
     <div className="container mt-5">
       <h1 className="mb-4">Buttons</h1>
       {components.map((chunk) => (
-        <div className="row mb-3">
+        <div className="row gx-2 mb-3">
           {chunk.map((c) => (
             <PfButton
               className="col"
