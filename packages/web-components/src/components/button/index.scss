@@ -1,0 +1,9 @@
+@import '../../../../../node_modules/bootstrap-v5/scss/_buttons.scss';
+@import '../../../../../node_modules/bootstrap-v5/scss/_spinners.scss';
+@import '../../../../../node_modules/bootstrap-v5/scss/_helpers.scss';
+
+.center-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

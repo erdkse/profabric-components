@@ -1,6 +1,5 @@
 import { Component, h, Element, Prop, Host, State, Watch } from '@stencil/core';
 import { MODES, SIZES, THEMES } from '../../utils/types';
-import { getGlobalStyles } from '../../utils/utils';
 import { v4 as uuidv4 } from 'uuid';
 
 export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
@@ -69,7 +68,6 @@ export class Select {
   }
 
   componentWillLoad() {
-    this.el.shadowRoot.appendChild(getGlobalStyles());
     this.ID = uuidv4();
     this.watchOptions(this.options, []);
     this.watchValue(this.value, null);

@@ -1,6 +1,13 @@
-import { Component, h, Element, Prop, Host, Listen } from '@stencil/core';
+import {
+  Component,
+  h,
+  Element,
+  Prop,
+  Host,
+  Listen,
+  State,
+} from '@stencil/core';
 import { MODES, SIZES, THEMES } from '../../utils/types';
-import { getGlobalStyles } from '../../utils/utils';
 
 export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
 
@@ -13,15 +20,18 @@ export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
   shadow: true,
 })
 export class Button {
+  @State() disabledState: boolean;
+
   @Element() el: HTMLElement;
   @Prop({ reflect: true, mutable: true }) theme: THEMES | string = 'primary';
   @Prop({ reflect: true, mutable: true }) size: SIZES = 'default';
   @Prop({ reflect: true, mutable: true }) mode: MODES;
   @Prop({ reflect: true, mutable: true }) type: BUTTON_TYPES = 'button';
   @Prop({ reflect: true, mutable: true }) class: string = '';
-  @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) loading: boolean = false;
+  @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) block: boolean = false;
+
   @Listen('click', { capture: true })
   onClick(event: Event) {
     if (this.disabled || this.loading) {
@@ -41,16 +51,12 @@ export class Button {
     }
   }
 
-  componentWillLoad() {
-    this.el.shadowRoot.appendChild(getGlobalStyles());
-  }
-
   render() {
     let innerTemplate = <slot />;
 
     if (this.loading) {
       innerTemplate = (
-        <div class="d-flex justify-content-center align-items-center">
+        <div class="center-items">
           <span>&nbsp;</span>
           <div class="spinner-border spinner-border-sm" role="status">
             <span

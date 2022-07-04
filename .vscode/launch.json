@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "StencilJS",
+      "url": "http://localhost:3333/",
+      "webRoot": "${workspaceFolder}/www",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "./src/*": "${workspaceFolder}/src/*"
+      },
+      "trace": true
+    }
+  ]
+}
