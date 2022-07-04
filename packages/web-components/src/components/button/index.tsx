@@ -14,8 +14,8 @@ export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
 @Component({
   tag: 'pf-button',
   styleUrls: {
-    bs4: 'index.scss',
-    bs5: 'index.scss',
+    bs4: 'bs4.scss',
+    bs5: 'bs5.scss',
   },
   shadow: true,
 })
@@ -57,7 +57,6 @@ export class Button {
     if (this.loading) {
       innerTemplate = (
         <div class="center-items">
-          <span>&nbsp;</span>
           <div class="spinner-border spinner-border-sm" role="status">
             <span
               class={{
@@ -73,15 +72,16 @@ export class Button {
     }
     return (
       <Host
+        disabled={this.disabled || this.loading}
         style={{
           width: this.block ? '100%' : 'inherit',
           display: 'block',
-          pointerEvents:
-            this.disabled || this.loading ? 'none !important' : 'inherit',
-          cursor:
-            this.disabled || this.loading
-              ? 'not-allowed !important'
-              : 'inherit',
+          // pointerEvents:
+          //   this.disabled || this.loading ? 'none !important' : 'inherit',
+          // cursor:
+          //   this.disabled || this.loading
+          //     ? 'not-allowed !important'
+          //     : 'inherit',
         }}
       >
         <button
@@ -91,16 +91,17 @@ export class Button {
             [`btn-${this.theme}`]: true,
             'btn-sm': this.size === 'small',
             'btn-lg': this.size === 'large',
+            disabled: this.disabled || this.loading,
           }}
           disabled={this.disabled || this.loading}
           style={{
             width: this.block ? '100%' : 'inherit',
-            pointerEvents:
-              this.disabled || this.loading ? 'none !important' : 'inherit',
-            cursor:
-              this.disabled || this.loading
-                ? 'not-allowed !important'
-                : 'inherit',
+            // pointerEvents:
+            //   this.disabled || this.loading ? 'none !important' : 'inherit',
+            // cursor:
+            //   this.disabled || this.loading
+            //     ? 'not-allowed !important'
+            //     : 'inherit',
           }}
         >
           {innerTemplate}

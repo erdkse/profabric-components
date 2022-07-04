@@ -1,0 +1,11 @@
+@import '../../../../../node_modules/bootstrap-v4/scss/_functions.scss';
+@import '../../../../../node_modules/bootstrap-v4/scss/_variables.scss';
+@import '../../../../../node_modules/bootstrap-v4/scss/_mixins.scss';
+@import '../../../../../node_modules/bootstrap-v4/scss/_forms.scss';
+
+select {
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

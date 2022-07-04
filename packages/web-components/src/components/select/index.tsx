@@ -11,8 +11,8 @@ export type Option = {
 @Component({
   tag: 'pf-select',
   styleUrls: {
-    bs4: 'index.scss',
-    bs5: 'index.scss',
+    bs4: 'bs4.scss',
+    bs5: 'bs5.scss',
   },
   shadow: true,
 })

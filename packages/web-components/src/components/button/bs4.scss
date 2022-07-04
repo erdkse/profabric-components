@@ -1,0 +1,20 @@
+@import '../../../../../node_modules/bootstrap-v4/scss/_functions.scss';
+@import '../../../../../node_modules/bootstrap-v4/scss/_variables.scss';
+@import '../../../../../node_modules/bootstrap-v4/scss/_mixins.scss';
+@import '../../../../../node_modules/bootstrap-v4/scss/utilities/_screenreaders.scss';
+
+@import '../../../../../node_modules/bootstrap-v4/scss/_buttons.scss';
+@import '../../../../../node_modules/bootstrap-v4/scss/_spinners.scss';
+
+.center-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
