@@ -1,8 +1,7 @@
 import { Component, h, Element, Prop, Host, State, Watch } from '@stencil/core';
-import { MODES, SIZES, THEMES } from '../../utils/types';
+import { MODE, SIZE, THEME } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 
-export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
 export type Option = {
   value: string;
   label: string;
@@ -20,11 +19,11 @@ export class Select {
   @State() ID: string;
   @Element() el: HTMLElement;
   @Prop({ reflect: true, mutable: true }) class: string = '';
-  @Prop({ reflect: true, mutable: true }) theme: THEMES = 'primary';
-  @Prop({ reflect: true, mutable: true }) size: SIZES = 'default';
+  @Prop({ reflect: true, mutable: true }) theme: THEME = 'primary';
+  @Prop({ reflect: true, mutable: true }) size: SIZE = 'default';
   @Prop({ reflect: true, mutable: true }) label: string = null;
   @Prop({ reflect: true, mutable: true }) type: string;
-  @Prop({ reflect: true, mutable: true }) mode: MODES;
+  @Prop({ reflect: true, mutable: true }) mode: MODE;
   @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) block: boolean = false;
   @Prop({ reflect: true, mutable: true }) options: Array<Option> = [];

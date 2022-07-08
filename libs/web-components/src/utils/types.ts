@@ -1,4 +1,4 @@
-export type THEMES =
+export type THEME =
   | 'primary'
   | 'secondary'
   | 'success'
@@ -8,7 +8,7 @@ export type THEMES =
   | 'dark'
   | 'light'
   | 'link';
-export type SIZES = 'large' | 'default' | 'small';
-export type MODES = 'bs4' | 'bs5';
+export type SIZE = 'large' | 'default' | 'small';
+export type MODE = 'bs4' | 'bs5';
 
-export const Modes: Array<MODES> = ['bs4', 'bs5'];
+export const Modes: Array<MODE> = ['bs4', 'bs5'];

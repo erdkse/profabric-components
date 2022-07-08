@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MODES, SIZES, THEMES } from "./utils/types";
-import { BUTTON_TYPES } from "./components/button/index";
+import { MODE, SIZE, THEME } from "./utils/types";
+import { BUTTON_TYPE } from "./components/button/index";
 import { Option } from "./components/select/index";
 export namespace Components {
     interface PfButton {
@@ -14,16 +14,16 @@ export namespace Components {
         "class": string;
         "disabled": boolean;
         "loading": boolean;
-        "mode": MODES;
-        "size": SIZES;
-        "theme": THEMES | string;
-        "type": BUTTON_TYPES;
+        "mode": MODE;
+        "size": SIZE;
+        "theme": THEME | string;
+        "type": BUTTON_TYPE;
     }
     interface PfCheckbox {
         "block": boolean;
         "checked": boolean;
         "disabled": boolean;
-        "mode": MODES;
+        "mode": MODE;
         "switchable": boolean;
         "value": string;
     }
@@ -32,10 +32,10 @@ export namespace Components {
         "class": string;
         "disabled": boolean;
         "label": string;
-        "mode": MODES;
+        "mode": MODE;
         "options": Array<Option>;
-        "size": SIZES;
-        "theme": THEMES;
+        "size": SIZE;
+        "theme": THEME;
         "type": string;
         "value": string;
     }
@@ -71,16 +71,16 @@ declare namespace LocalJSX {
         "class"?: string;
         "disabled"?: boolean;
         "loading"?: boolean;
-        "mode"?: MODES;
-        "size"?: SIZES;
-        "theme"?: THEMES | string;
-        "type"?: BUTTON_TYPES;
+        "mode"?: MODE;
+        "size"?: SIZE;
+        "theme"?: THEME | string;
+        "type"?: BUTTON_TYPE;
     }
     interface PfCheckbox {
         "block"?: boolean;
         "checked"?: boolean;
         "disabled"?: boolean;
-        "mode"?: MODES;
+        "mode"?: MODE;
         "switchable"?: boolean;
         "value"?: string;
     }
@@ -89,10 +89,10 @@ declare namespace LocalJSX {
         "class"?: string;
         "disabled"?: boolean;
         "label"?: string;
-        "mode"?: MODES;
+        "mode"?: MODE;
         "options"?: Array<Option>;
-        "size"?: SIZES;
-        "theme"?: THEMES;
+        "size"?: SIZE;
+        "theme"?: THEME;
         "type"?: string;
         "value"?: string;
     }

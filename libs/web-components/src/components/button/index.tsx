@@ -8,9 +8,9 @@ import {
   Watch,
   State,
 } from '@stencil/core';
-import { MODES, SIZES, THEMES } from '../../utils/types';
+import { MODE, SIZE, THEME } from '../../utils/types';
 
-export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
+export type BUTTON_TYPE = 'submit' | 'button' | 'reset';
 
 @Component({
   tag: 'pf-button',
@@ -23,10 +23,10 @@ export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
 export class Button {
   @State() tempDisabled: boolean = false;
   @Element() el: HTMLElement;
-  @Prop({ reflect: true, mutable: true }) theme: THEMES | string = 'primary';
-  @Prop({ reflect: true, mutable: true }) size: SIZES = 'default';
-  @Prop({ reflect: true, mutable: true }) mode: MODES;
-  @Prop({ reflect: true, mutable: true }) type: BUTTON_TYPES = 'button';
+  @Prop({ reflect: true, mutable: true }) theme: THEME | string = 'primary';
+  @Prop({ reflect: true, mutable: true }) size: SIZE = 'default';
+  @Prop({ reflect: true, mutable: true }) mode: MODE;
+  @Prop({ reflect: true, mutable: true }) type: BUTTON_TYPE = 'button';
   @Prop({ reflect: true, mutable: true }) class: string = '';
   @Prop({ reflect: true, mutable: true }) loading: boolean = false;
   @Prop({ reflect: true, mutable: true }) disabled: boolean = false;

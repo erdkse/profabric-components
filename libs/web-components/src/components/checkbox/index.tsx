@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, Host, State } from '@stencil/core';
-import { MODES } from '../../utils/types';
+import { MODE } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 
 export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
@@ -16,7 +16,7 @@ export class Button {
   @State() ID: string;
 
   @Element() el: HTMLElement;
-  @Prop({ reflect: true, mutable: true }) mode: MODES;
+  @Prop({ reflect: true, mutable: true }) mode: MODE;
   @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) block: boolean = false;
   @Prop({ reflect: true, mutable: true }) switchable: boolean = false;
