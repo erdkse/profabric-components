@@ -16,15 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@profabric/angular-components": [
-        "packages/web-components-angular/src/index.ts"
+        "libs/web-components-angular/src/index.ts"
       ],
-      "@profabric/react-components": [
-        "packages/web-components-react/src/index.ts"
-      ],
-      "@profabric/web-components": ["dist/packages/web-components"],
-      "@profabric/web-components/loader": [
-        "dist/packages/web-components/loader"
-      ]
+      "@profabric/react-components": ["libs/web-components-react/src/index.ts"],
+      "@profabric/web-components": ["dist/libs/web-components"],
+      "@profabric/web-components/loader": ["dist/libs/web-components/loader"]
     }
   },
   "exclude": ["node_modules", "tmp"]

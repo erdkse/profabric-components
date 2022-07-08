@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/react-app/src",
+  "sourceRoot": "libs/react-app/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,17 +9,17 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/packages/react-app",
-        "index": "packages/react-app/src/index.html",
+        "outputPath": "dist/libs/react-app",
+        "index": "libs/react-app/src/index.html",
         "baseHref": "/",
-        "main": "packages/react-app/src/main.tsx",
-        "polyfills": "packages/react-app/src/polyfills.ts",
-        "tsConfig": "packages/react-app/tsconfig.app.json",
+        "main": "libs/react-app/src/main.tsx",
+        "polyfills": "libs/react-app/src/polyfills.ts",
+        "tsConfig": "libs/react-app/tsconfig.app.json",
         "assets": [
-          "packages/react-app/src/favicon.ico",
-          "packages/react-app/src/assets"
+          "libs/react-app/src/favicon.ico",
+          "libs/react-app/src/assets"
         ],
-        "styles": ["packages/react-app/src/styles.scss"],
+        "styles": ["libs/react-app/src/styles.scss"],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
       },
@@ -33,8 +33,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "packages/react-app/src/environments/environment.ts",
-              "with": "packages/react-app/src/environments/environment.prod.ts"
+              "replace": "libs/react-app/src/environments/environment.ts",
+              "with": "libs/react-app/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -67,14 +67,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/react-app/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/react-app/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/react-app"],
+      "outputs": ["coverage/libs/react-app"],
       "options": {
-        "jestConfig": "packages/react-app/jest.config.ts",
+        "jestConfig": "libs/react-app/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -73,7 +73,7 @@
     "workbox-build": "4.3.1"
   },
   "workspaces": [
-    "packages/**"
+    "libs/**"
   ],
   "dependencies": {
     "@angular/animations": "14.0.5",
@@ -97,3 +97,4 @@
     "zone.js": "~0.11.4"
   }
 }
+

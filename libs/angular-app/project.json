@@ -1,22 +1,22 @@
 {
   "projectType": "application",
-  "sourceRoot": "packages/angular-app/src",
+  "sourceRoot": "libs/angular-app/src",
   "prefix": "profabric",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/angular-app",
-        "index": "packages/angular-app/src/index.html",
-        "main": "packages/angular-app/src/main.ts",
-        "polyfills": "packages/angular-app/src/polyfills.ts",
-        "tsConfig": "packages/angular-app/tsconfig.app.json",
+        "outputPath": "dist/libs/angular-app",
+        "index": "libs/angular-app/src/index.html",
+        "main": "libs/angular-app/src/main.ts",
+        "polyfills": "libs/angular-app/src/polyfills.ts",
+        "tsConfig": "libs/angular-app/tsconfig.app.json",
         "assets": [
-          "packages/angular-app/src/favicon.ico",
-          "packages/angular-app/src/assets"
+          "libs/angular-app/src/favicon.ico",
+          "libs/angular-app/src/assets"
         ],
-        "styles": ["packages/angular-app/src/styles.scss"],
+        "styles": ["libs/angular-app/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -35,8 +35,8 @@
           ],
           "fileReplacements": [
             {
-              "replace": "packages/angular-app/src/environments/environment.ts",
-              "with": "packages/angular-app/src/environments/environment.prod.ts"
+              "replace": "libs/angular-app/src/environments/environment.ts",
+              "with": "libs/angular-app/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
@@ -74,16 +74,16 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "packages/angular-app/**/*.ts",
-          "packages/angular-app/**/*.html"
+          "libs/angular-app/**/*.ts",
+          "libs/angular-app/**/*.html"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/angular-app"],
+      "outputs": ["coverage/libs/angular-app"],
       "options": {
-        "jestConfig": "packages/angular-app/jest.config.ts",
+        "jestConfig": "libs/angular-app/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,12 +1,12 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/react-app-e2e/src",
+  "sourceRoot": "libs/react-app-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "packages/react-app-e2e/cypress.json",
+        "cypressConfig": "libs/react-app-e2e/cypress.json",
         "devServerTarget": "react-app:serve:development"
       },
       "configurations": {
@@ -17,9 +17,13 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/react-app-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "libs/react-app-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
