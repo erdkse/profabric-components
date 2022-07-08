@@ -14,17 +14,17 @@
 
 :host([disabled]) {
   cursor: not-allowed !important;
-  pointer-events: none !important;
+  // pointer-events: none !important;
 }
 
 button {
   cursor: pointer;
   &.disabled {
     cursor: not-allowed !important;
-    pointer-events: none !important;
+    // pointer-events: none !important;
   }
   &:disabled {
     cursor: not-allowed !important;
-    pointer-events: none !important;
+    // pointer-events: none !important;
   }
 }

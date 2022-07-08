@@ -62,12 +62,7 @@ export class Button {
   }
 
   componentWillLoad() {
-    if (this.loading) {
-      this.tempDisabled = this.disabled;
-      this.disabled = true;
-    } else {
-      this.disabled = this.tempDisabled;
-    }
+    this.watchLoading(this.loading);
   }
 
   render() {

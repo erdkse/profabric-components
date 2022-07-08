@@ -76,50 +76,51 @@ export class Select {
   render() {
     return (
       <Host
-        class={{ 'form-group': true }}
         style={{ width: this.block ? '100%' : 'inherit', display: 'block' }}
         disabled={this.disabled}
         value={this.value}
       >
-        <label
-          htmlFor={this.ID}
-          class={{
-            'select-label': true,
-          }}
-          style={{ fontWeight: '500' }}
-        >
-          {this.label}
-        </label>
-        <select
-          id={this.ID}
-          name={this.ID}
-          class={{
-            'form-select': this.mode === 'bs5',
-            'form-select-sm': this.mode === 'bs5' && this.size === 'small',
-            'form-select-lg': this.mode === 'bs5' && this.size === 'large',
-            'form-control': this.mode === 'bs4',
-            'form-control-sm': this.mode === 'bs4' && this.size === 'small',
-            'form-control-lg': this.mode === 'bs4' && this.size === 'large',
-            'custom-select': this.type === 'custom',
-          }}
-          aria-label=".form-select example"
-          onChange={this.handleOnChange.bind(this)}
-          disabled={this.disabled}
-        >
-          <option selected={this.value === ''} value="">
-            Please pick..
-          </option>
-          {this.options.map((option: Option) => {
-            return (
-              <option
-                selected={this.value === option.value}
-                value={option.value}
-              >
-                {option.label}
-              </option>
-            );
-          })}
-        </select>
+        <div class={{ 'form-group': true }}>
+          <label
+            htmlFor={this.ID}
+            class={{
+              'select-label': true,
+            }}
+            style={{ fontWeight: '500' }}
+          >
+            {this.label}
+          </label>
+          <select
+            id={this.ID}
+            name={this.ID}
+            class={{
+              'form-select': this.mode === 'bs5',
+              'form-select-sm': this.mode === 'bs5' && this.size === 'small',
+              'form-select-lg': this.mode === 'bs5' && this.size === 'large',
+              'form-control': this.mode === 'bs4',
+              'form-control-sm': this.mode === 'bs4' && this.size === 'small',
+              'form-control-lg': this.mode === 'bs4' && this.size === 'large',
+              'custom-select': this.type === 'custom',
+            }}
+            aria-label=".form-select example"
+            onChange={this.handleOnChange.bind(this)}
+            disabled={this.disabled}
+          >
+            <option selected={this.value === ''} value="">
+              Please pick..
+            </option>
+            {this.options.map((option: Option) => {
+              return (
+                <option
+                  selected={this.value === option.value}
+                  value={option.value}
+                >
+                  {option.label}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </Host>
     );
   }
