@@ -13,22 +13,7 @@ export const config: Config = {
   globalStyle: 'src/global/main.scss',
   globalScript: 'src/global/main.ts',
   enableCache: false,
-  plugins: [
-    sass({
-      // injectGlobalPaths: [
-      //   // Bootstrap 5
-      //   `${__dirname}/../../node_modules/bootstrap-v5/scss/_functions.scss`,
-      //   `${__dirname}/../../node_modules/bootstrap-v5/scss/_variables.scss`,
-      //   `${__dirname}/../../node_modules/bootstrap-v5/scss/_mixins.scss`,
-      //   `${__dirname}/../../node_modules/bootstrap-v5/scss/_helpers.scss`,
-      //   // Bootstrap 4
-      //   `${__dirname}/../../node_modules/bootstrap-v4/scss/_functions.scss`,
-      //   `${__dirname}/../../node_modules/bootstrap-v4/scss/_variables.scss`,
-      //   `${__dirname}/../../node_modules/bootstrap-v4/scss/_mixins.scss`,
-      //   `${__dirname}/../../node_modules/bootstrap-v4/scss/_helpers.scss`,
-      // ],
-    }),
-  ],
+  plugins: [sass()],
   outputTargets: [
     {
       type: 'dist',
