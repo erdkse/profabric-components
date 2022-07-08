@@ -28,5 +28,7 @@
     }
   },
   "tags": [],
-  "implicitDependencies": []
+  "implicitDependencies": [
+    "angular-app"
+  ]
 }
