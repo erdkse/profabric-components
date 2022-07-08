@@ -24,9 +24,7 @@ export namespace Components {
         "checked": boolean;
         "disabled": boolean;
         "mode": MODES;
-        "size": SIZES;
         "switchable": boolean;
-        "theme": THEMES | string;
         "value": string;
     }
     interface PfSelect {
@@ -83,9 +81,7 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         "disabled"?: boolean;
         "mode"?: MODES;
-        "size"?: SIZES;
         "switchable"?: boolean;
-        "theme"?: THEMES | string;
         "value"?: string;
     }
     interface PfSelect {
