@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "ngcc --properties es2015 browser module main",
+    "postinstall": "ngcc --properties es2020 browser module main",
     "start": "concurrently \"nx build web-components --watch\" \"nx serve web-components\"",
     "start:react": "concurrently \"nx build web-components --watch\" \"nx serve react-app\"",
     "start:angular": "concurrently \"nx build web-components --watch\" \"nx serve angular-app\"",
@@ -20,7 +20,7 @@
     "@angular-eslint/eslint-plugin": "14.0.0",
     "@angular-eslint/eslint-plugin-template": "14.0.0",
     "@angular-eslint/template-parser": "14.0.0",
-    "@angular/cli": "~13.3.0",
+    "@angular/cli": "~14.0.0",
     "@angular/compiler-cli": "14.0.5",
     "@angular/language-service": "14.0.5",
     "@nrwl/angular": "14.4.2",
@@ -97,4 +97,3 @@
     "zone.js": "~0.11.4"
   }
 }
-
