@@ -1,29 +1,33 @@
 {
   "projectType": "library",
-  "sourceRoot": "packages/web-components-angular/src",
+  "sourceRoot": "libs/web-components-angular/src",
   "prefix": "profabric",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/packages/web-components-angular"],
+      "outputs": [
+        "dist/libs/web-components-angular"
+      ],
       "options": {
-        "project": "packages/web-components-angular/ng-package.json"
+        "project": "libs/web-components-angular/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "packages/web-components-angular/tsconfig.lib.prod.json"
+          "tsConfig": "libs/web-components-angular/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "packages/web-components-angular/tsconfig.lib.json"
+          "tsConfig": "libs/web-components-angular/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/web-components-angular"],
+      "outputs": [
+        "coverage/libs/web-components-angular"
+      ],
       "options": {
-        "jestConfig": "packages/web-components-angular/jest.config.ts",
+        "jestConfig": "libs/web-components-angular/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -31,8 +35,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "packages/web-components-angular/**/*.ts",
-          "packages/web-components-angular/**/*.html"
+          "libs/web-components-angular/**/*.ts",
+          "libs/web-components-angular/**/*.html"
         ]
       }
     }

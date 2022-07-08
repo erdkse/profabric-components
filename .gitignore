@@ -40,4 +40,5 @@ Thumbs.db
 packages/web-components-react/**/generated
 
 .angular
-packages/web-components-angular/**/generated
+libs/web-components-angular/**/generated
+libs/web-components-react/**/generated
