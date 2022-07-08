@@ -5,6 +5,7 @@ import {
   Prop,
   Host,
   Listen,
+  Watch,
   State,
 } from '@stencil/core';
 import { MODES, SIZES, THEMES } from '../../utils/types';
@@ -20,8 +21,7 @@ export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
   shadow: true,
 })
 export class Button {
-  @State() disabledState: boolean;
-
+  @State() tempDisabled: boolean = false;
   @Element() el: HTMLElement;
   @Prop({ reflect: true, mutable: true }) theme: THEMES | string = 'primary';
   @Prop({ reflect: true, mutable: true }) size: SIZES = 'default';
@@ -32,9 +32,19 @@ export class Button {
   @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) block: boolean = false;
 
+  @Watch('loading')
+  watchLoading(currentValue: boolean) {
+    if (currentValue) {
+      this.tempDisabled = this.disabled;
+      this.disabled = true;
+    } else {
+      this.disabled = this.tempDisabled;
+    }
+  }
+
   @Listen('click', { capture: true })
   onClick(event: Event) {
-    if (this.disabled || this.loading) {
+    if (this.disabled) {
       event.preventDefault();
       event.stopPropagation();
       return;
@@ -51,12 +61,24 @@ export class Button {
     }
   }
 
+  componentWillLoad() {
+    if (this.loading) {
+      this.tempDisabled = this.disabled;
+      this.disabled = true;
+    } else {
+      this.disabled = this.tempDisabled;
+    }
+  }
+
   render() {
     let innerTemplate = <slot />;
 
     if (this.loading) {
       innerTemplate = (
-        <div class="center-items">
+        <div
+          class="center-items"
+          style={{ padding: this.size === 'large' ? '3px 0' : '0' }}
+        >
           <div class="spinner-border spinner-border-sm" role="status">
             <span
               class={{
@@ -72,17 +94,7 @@ export class Button {
     }
     return (
       <Host
-        disabled={this.disabled || this.loading}
-        style={{
-          width: this.block ? '100%' : 'inherit',
-          display: 'block',
-          // pointerEvents:
-          //   this.disabled || this.loading ? 'none !important' : 'inherit',
-          // cursor:
-          //   this.disabled || this.loading
-          //     ? 'not-allowed !important'
-          //     : 'inherit',
-        }}
+        style={{ width: this.block ? '100%' : 'inherit', display: 'block' }}
       >
         <button
           type={this.type}
@@ -91,18 +103,10 @@ export class Button {
             [`btn-${this.theme}`]: true,
             'btn-sm': this.size === 'small',
             'btn-lg': this.size === 'large',
-            disabled: this.disabled || this.loading,
+            disabled: this.disabled,
           }}
-          disabled={this.disabled || this.loading}
-          style={{
-            width: this.block ? '100%' : 'inherit',
-            // pointerEvents:
-            //   this.disabled || this.loading ? 'none !important' : 'inherit',
-            // cursor:
-            //   this.disabled || this.loading
-            //     ? 'not-allowed !important'
-            //     : 'inherit',
-          }}
+          style={{ width: this.block ? '100%' : 'inherit' }}
+          disabled={this.disabled}
         >
           {innerTemplate}
         </button>
