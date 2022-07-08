@@ -21,11 +21,13 @@ export namespace Components {
     }
     interface PfCheckbox {
         "block": boolean;
+        "checked": boolean;
         "disabled": boolean;
         "mode": MODES;
         "size": SIZES;
         "switchable": boolean;
         "theme": THEMES | string;
+        "value": string;
     }
     interface PfSelect {
         "block": boolean;
@@ -78,11 +80,13 @@ declare namespace LocalJSX {
     }
     interface PfCheckbox {
         "block"?: boolean;
+        "checked"?: boolean;
         "disabled"?: boolean;
         "mode"?: MODES;
         "size"?: SIZES;
         "switchable"?: boolean;
         "theme"?: THEMES | string;
+        "value"?: string;
     }
     interface PfSelect {
         "block"?: boolean;

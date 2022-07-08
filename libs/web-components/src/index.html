@@ -129,12 +129,22 @@
       <div class="row mt-3">
         <h5>Checkbox</h5>
         <div class="col">
-          <pf-checkbox>Disabled checked checkbox</pf-checkbox>
+          <pf-checkbox>Checkbox</pf-checkbox>
         </div>
         <div class="col">
           <pf-checkbox switchable>Disabled checked checkbox</pf-checkbox>
         </div>
-        
+      </div>
+      <div class="row mt-3">
+        <h5>Disabled Checkbox</h5>
+        <div class="col">
+          <pf-checkbox disabled checked>Disabled Checked Checkbox</pf-checkbox>
+        </div>
+        <div class="col">
+          <pf-checkbox switchable disabled checked>
+            Disabled checked switch
+          </pf-checkbox>
+        </div>
       </div>
     </div>
     <script>
@@ -162,6 +172,14 @@
         select.addEventListener('change', (event) => {
           console.log('event', event);
           console.log('value', event.target.value);
+        });
+      });
+    </script>
+    <script>
+      const checkboxes = document.querySelectorAll('pf-checkbox');
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', (event) => {
+          console.log('checked', event.target.checked);
         });
       });
     </script>

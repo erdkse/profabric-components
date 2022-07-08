@@ -22,6 +22,16 @@ export class Button {
   @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) block: boolean = false;
   @Prop({ reflect: true, mutable: true }) switchable: boolean = false;
+  @Prop({ reflect: true, mutable: true }) checked: boolean = false;
+  @Prop({ reflect: true, mutable: true }) value: string = '';
+
+  handleOnChange(e) {
+    this.checked = e.target.checked;
+    e.preventDefault();
+    e.stopPropagation();
+    this.el.dispatchEvent(new e.constructor(e.type, e));
+    this.el.dispatchEvent(new e.constructor('input', e)); // this is temporary to support React
+  }
 
   componentWillLoad() {
     this.ID = uuidv4();
@@ -41,8 +51,11 @@ export class Button {
           <input
             class="form-check-input"
             type="checkbox"
-            value=""
             id={this.ID}
+            disabled={this.disabled}
+            checked={this.checked}
+            onChange={this.handleOnChange.bind(this)}
+            value={this.value}
           />
           <label class="form-check-label" htmlFor={this.ID}>
             <slot />
