@@ -8,10 +8,9 @@
     "start:react": "concurrently \"nx build web-components --watch\" \"nx serve react-app\"",
     "start:angular": "concurrently \"nx build web-components --watch\" \"nx serve angular-app\"",
     "build": "nx build web-components && nx build web-components-angular && nx build web-components-react",
-    "publish:web": "cd dist/packages/web-components && npm publish --access public",
-    "publish:angular": "cd dist/packages/web-components-angular && npm publish --access public",
-    "publish:react": "cd dist/packages/web-components-react && npm publish --access public",
-    "publish": "npm run publish:web && npm run publish:angular && npm run publish:react"
+    "publish:web": "npm publish --folder ./dist/libs/web-components --access public",
+    "publish:angular": "npm publish --folder ./dist/libs/web-components-angular --access public",
+    "publish:react": "npm publish --folder ./dist/libs/web-components-react --access public",
   },
   "private": true,
   "devDependencies": {
@@ -97,4 +96,3 @@
     "zone.js": "~0.11.4"
   }
 }
-

@@ -1,4 +1,7 @@
 {
   "name": "@profabric/react-components",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "@profabric/web-components": "0.0.1"
+  }
 }
