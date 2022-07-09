@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, Host, State, Watch } from '@stencil/core';
-import { MODE, SIZE, THEME } from '../../utils/types';
+import { MODE, SIZE } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 
 export type Option = {
@@ -19,7 +19,6 @@ export class Select {
   @State() ID: string;
   @Element() el: HTMLElement;
   @Prop({ reflect: true, mutable: true }) class: string = '';
-  @Prop({ reflect: true, mutable: true }) theme: THEME = 'primary';
   @Prop({ reflect: true, mutable: true }) size: SIZE = 'default';
   @Prop({ reflect: true, mutable: true }) label: string = null;
   @Prop({ reflect: true, mutable: true }) type: string;

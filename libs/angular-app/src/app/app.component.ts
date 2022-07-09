@@ -19,7 +19,7 @@ export class AppComponent {
     'light',
     'link',
   ];
-  public components = [
+  public buttons = [
     this.themes.map((t) => ({
       theme: t,
       text: t.charAt(0).toUpperCase() + t.slice(1).toLowerCase(),
@@ -39,6 +39,42 @@ export class AppComponent {
       size: 'large',
     })),
   ];
+  public selects: Array<any> = [
+    {
+      options: this.themes.map((t) => ({
+        label: t.charAt(0).toUpperCase() + t.slice(1).toLowerCase(),
+        value: t,
+      })),
+      label: 'Small',
+      size: 'small',
+    },
+    {
+      options: this.themes.map((t) => ({
+        label: t.charAt(0).toUpperCase() + t.slice(1).toLowerCase(),
+        value: t,
+      })),
+      label: 'Default',
+      size: 'default',
+    },
+    {
+      options: this.themes.map((t) => ({
+        label: t.charAt(0).toUpperCase() + t.slice(1).toLowerCase(),
+        value: t,
+      })),
+      label: 'Large',
+      size: 'large',
+    },
+  ];
+  public checkboxes: Array<any> = [
+    {
+      label: 'Checkbox',
+      switchable: false,
+    },
+    {
+      label: 'Switch',
+      switchable: true,
+    },
+  ];
   public timeoutID: any = null;
 
   public handleClick(item: any) {
@@ -46,14 +82,22 @@ export class AppComponent {
       clearTimeout(this.timeoutID);
     }
 
-    this.components = this.components.map((chunk) =>
+    this.buttons = this.buttons.map((chunk) =>
       chunk.map((c) => ({ ...c, loading: _.isEqual(c, item) }))
     );
 
     this.timeoutID = setTimeout(() => {
-      this.components = this.components.map((chunk) =>
+      this.buttons = this.buttons.map((chunk) =>
         chunk.map((c) => ({ ...c, loading: false }))
       );
     }, 50000);
+  }
+
+  public handleOnSelectChange(event: any) {
+    console.log(event.target.value);
+  }
+
+  public handleOnCheckboxChange(event: any) {
+    console.log(event.target.checked);
   }
 }

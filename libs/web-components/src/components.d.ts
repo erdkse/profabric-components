@@ -35,7 +35,6 @@ export namespace Components {
         "mode": MODE;
         "options": Array<Option>;
         "size": SIZE;
-        "theme": THEME;
         "type": string;
         "value": string;
     }
@@ -92,7 +91,6 @@ declare namespace LocalJSX {
         "mode"?: MODE;
         "options"?: Array<Option>;
         "size"?: SIZE;
-        "theme"?: THEME;
         "type"?: string;
         "value"?: string;
     }

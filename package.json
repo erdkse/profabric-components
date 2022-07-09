@@ -10,7 +10,7 @@
     "build": "nx build web-components && nx build web-components-angular && nx build web-components-react",
     "publish:web": "npm publish --folder ./dist/libs/web-components --access public",
     "publish:angular": "npm publish --folder ./dist/libs/web-components-angular --access public",
-    "publish:react": "npm publish --folder ./dist/libs/web-components-react --access public",
+    "publish:react": "npm publish --folder ./dist/libs/web-components-react --access public"
   },
   "private": true,
   "devDependencies": {

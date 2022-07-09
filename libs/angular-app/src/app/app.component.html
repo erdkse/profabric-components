@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <h1 class="mb-4">Buttons</h1>
-  <div *ngFor="let chunk of components" class="row gx-2 mb-3">
+  <div *ngFor="let chunk of buttons" class="row gx-2 mb-3">
     <pf-button
       *ngFor="let c of chunk"
       class="col"
@@ -12,5 +12,26 @@
     >
       {{ c.text }}
     </pf-button>
+  </div>
+
+  <div class="row gx-2 mb-3">
+    <pf-select
+      class="col"
+      *ngFor="let component of selects"
+      [label]="component.label"
+      [options]="component.options"
+      [size]="component.size"
+      (change)="handleOnSelectChange($event)"
+    ></pf-select>
+  </div>
+  <div class="row gx-2 mb-3">
+    <pf-checkbox
+      class="col"
+      *ngFor="let checkbox of checkboxes"
+      [switchable]="checkbox.switchable"
+      (change)="handleOnCheckboxChange($event)"
+    >
+      {{ checkbox.label }}</pf-checkbox
+    >
   </div>
 </div>
