@@ -62,7 +62,6 @@ export class Select {
     e.preventDefault();
     e.stopPropagation();
     this.el.dispatchEvent(new e.constructor(e.type, e));
-    this.el.dispatchEvent(new e.constructor('input', e)); // this is temporary to support React
   }
 
   componentWillLoad() {
