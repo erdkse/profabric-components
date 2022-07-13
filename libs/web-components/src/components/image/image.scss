@@ -1,10 +1,11 @@
 :host {
   display: block;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
   img {
     object-fit: cover;
-  }
-  object {
-    object-fit: cover;
+    box-shadow: var(--pf-box-shadow, none);
   }
 
   .rounded {

@@ -11,7 +11,6 @@ import { Option } from "./components/select/index";
 export namespace Components {
     interface PfButton {
         "block": boolean;
-        "class": string;
         "disabled": boolean;
         "loading": boolean;
         "mode": MODE;
@@ -40,7 +39,6 @@ export namespace Components {
     }
     interface PfSelect {
         "block": boolean;
-        "class": string;
         "disabled": boolean;
         "label": string;
         "mode": MODE;
@@ -85,7 +83,6 @@ declare global {
 declare namespace LocalJSX {
     interface PfButton {
         "block"?: boolean;
-        "class"?: string;
         "disabled"?: boolean;
         "loading"?: boolean;
         "mode"?: MODE;
@@ -114,7 +111,6 @@ declare namespace LocalJSX {
     }
     interface PfSelect {
         "block"?: boolean;
-        "class"?: string;
         "disabled"?: boolean;
         "label"?: string;
         "mode"?: MODE;

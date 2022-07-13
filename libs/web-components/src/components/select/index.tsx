@@ -18,7 +18,6 @@ export type Option = {
 export class Select {
   @State() ID: string;
   @Element() el: HTMLElement;
-  @Prop({ reflect: true, mutable: true }) class: string = '';
   @Prop({ reflect: true, mutable: true }) size: SIZE = 'default';
   @Prop({ reflect: true, mutable: true }) label: string = null;
   @Prop({ reflect: true, mutable: true }) type: string;
@@ -77,7 +76,7 @@ export class Select {
         disabled={this.disabled}
         value={this.value}
       >
-        <div class={{ 'form-group': true, [this.class]: true }}>
+        <div class={{ 'form-group': true }}>
           <label
             htmlFor={this.ID}
             class={{

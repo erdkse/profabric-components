@@ -27,7 +27,6 @@ export class Button {
   @Prop({ reflect: true, mutable: true }) size: SIZE = 'default';
   @Prop({ reflect: true, mutable: true }) mode: MODE;
   @Prop({ reflect: true, mutable: true }) type: BUTTON_TYPE = 'button';
-  @Prop({ reflect: true, mutable: true }) class: string = '';
   @Prop({ reflect: true, mutable: true }) loading: boolean = false;
   @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) block: boolean = false;

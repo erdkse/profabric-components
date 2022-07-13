@@ -48,7 +48,6 @@ export class Checkbox {
       >
         <div
           class={{
-            [this.class]: true,
             'form-check': true,
             'form-switch': this.switchable,
           }}

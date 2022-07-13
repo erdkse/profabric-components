@@ -10,7 +10,6 @@
 | Property   | Attribute  | Description | Type                              | Default     |
 | ---------- | ---------- | ----------- | --------------------------------- | ----------- |
 | `block`    | `block`    |             | `boolean`                         | `false`     |
-| `class`    | `class`    |             | `string`                          | `''`        |
 | `disabled` | `disabled` |             | `boolean`                         | `false`     |
 | `loading`  | `loading`  |             | `boolean`                         | `false`     |
 | `mode`     | `mode`     |             | `"bs4" \| "bs5"`                  | `undefined` |

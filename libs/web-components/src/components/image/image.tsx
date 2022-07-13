@@ -1,21 +1,15 @@
-import {
-  Component,
-  getAssetPath,
-  h,
-  Host,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core';
-import { convertJSONtoCSS } from '../../utils/utils';
+import { Component, h, Host, Element, Prop, State, Watch } from '@stencil/core';
+import { loadingSvg } from '../../utils/utils';
 
 @Component({
   tag: 'pf-image',
   styleUrl: 'image.scss',
-  assetsDirs: ['assets'],
+  assetsDirs: ['../../../assets'],
   shadow: true,
 })
 export class Image {
+  @Element() el: HTMLElement;
+
   @Prop({ reflect: true, mutable: true }) class: string = '';
   @Prop({ reflect: true, mutable: true }) src: string = '';
   @Prop({ reflect: true, mutable: true }) fallbackSrc: string = '';
@@ -28,6 +22,13 @@ export class Image {
   @State() hasSrcfailed: boolean = false;
   @State() hasFallbackSrcfailed: boolean = false;
   @State() imageLoading: boolean = false;
+
+  @Watch('class')
+  watchClass(value: string) {
+    if (!value.includes('rounded') && this.rounded) {
+      this.class = `${this.class} rounded`;
+    }
+  }
 
   @Watch('loading')
   watchLoading(value) {
@@ -58,11 +59,17 @@ export class Image {
 
   componentWillLoad() {
     this.imageLoading = true;
+    this.watchClass(this.class);
+  }
+
+  getObjectUrl(svg: string) {
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    return URL.createObjectURL(blob);
   }
 
   getImageUrl() {
     if (this.imageLoading || this.loading) {
-      return getAssetPath('./assets/loading.svg');
+      return this.getObjectUrl(loadingSvg);
     }
 
     if (!this.hasSrcfailed) {
@@ -78,10 +85,18 @@ export class Image {
 
   render() {
     return (
-      <Host style={{ ...convertJSONtoCSS() }}>
+      <Host
+        style={{
+          width: `${this.width}px`,
+          height: `${this.height}px`,
+        }}
+      >
         <img
-          class={{ rounded: this.rounded, [this.class]: true }}
-          style={{ ...convertJSONtoCSS() }}
+          class={{ rounded: this.rounded }}
+          style={{
+            width: `${this.width}px`,
+            height: `${this.height}px`,
+          }}
           src={this.getImageUrl()}
           alt={this.alt}
           width={this.width}
