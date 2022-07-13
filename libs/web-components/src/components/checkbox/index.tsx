@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Host, State } from '@stencil/core';
+import { Component, h, Element, Prop, Host, State, Watch } from '@stencil/core';
 import { MODE } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -6,22 +6,25 @@ export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
 
 @Component({
   tag: 'pf-checkbox',
-  styleUrls: {
-    bs4: 'bs4.scss',
-    bs5: 'bs5.scss',
-  },
-  shadow: true,
+  styleUrl: 'style.scss',
+  shadow: false,
 })
-export class Button {
+export class Checkbox {
   @State() ID: string;
 
   @Element() el: HTMLElement;
+  @Prop() class: string = '';
   @Prop({ reflect: true, mutable: true }) mode: MODE;
   @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) block: boolean = false;
   @Prop({ reflect: true, mutable: true }) switchable: boolean = false;
   @Prop({ reflect: true, mutable: true }) checked: boolean = false;
   @Prop({ reflect: true, mutable: true }) value: string = '';
+
+  @Watch('mode')
+  watchMode(value) {
+    console.log('Checkbox', value);
+  }
 
   handleOnChange(e) {
     this.checked = e.target.checked;
@@ -32,6 +35,7 @@ export class Button {
 
   componentWillLoad() {
     this.ID = uuidv4();
+    console.log('Checkbox', this.mode);
   }
 
   render() {
@@ -41,6 +45,7 @@ export class Button {
       >
         <div
           class={{
+            [this.class]: true,
             'form-check': true,
             'form-switch': this.switchable,
           }}

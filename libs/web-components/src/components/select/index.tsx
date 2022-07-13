@@ -1,4 +1,13 @@
-import { Component, h, Element, Prop, Host, State, Watch } from '@stencil/core';
+import {
+  Component,
+  h,
+  Element,
+  Prop,
+  Host,
+  State,
+  Watch,
+  getMode,
+} from '@stencil/core';
 import { MODE, SIZE } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -9,20 +18,17 @@ export type Option = {
 
 @Component({
   tag: 'pf-select',
-  styleUrls: {
-    bs4: 'bs4.scss',
-    bs5: 'bs5.scss',
-  },
-  shadow: true,
+  styleUrl: 'style.scss',
+  shadow: false,
 })
 export class Select {
   @State() ID: string;
+  @State() mode: MODE;
   @Element() el: HTMLElement;
   @Prop({ reflect: true, mutable: true }) class: string = '';
   @Prop({ reflect: true, mutable: true }) size: SIZE = 'default';
   @Prop({ reflect: true, mutable: true }) label: string = null;
   @Prop({ reflect: true, mutable: true }) type: string;
-  @Prop({ reflect: true, mutable: true }) mode: MODE;
   @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
   @Prop({ reflect: true, mutable: true }) block: boolean = false;
   @Prop({ reflect: true, mutable: true }) options: Array<Option> = [];
@@ -68,6 +74,8 @@ export class Select {
     this.ID = uuidv4();
     this.watchOptions(this.options, []);
     this.watchValue(this.value, null);
+    this.mode = getMode(this.el);
+    console.log('Select', this.mode, this.size);
   }
 
   render() {
@@ -77,7 +85,7 @@ export class Select {
         disabled={this.disabled}
         value={this.value}
       >
-        <div class={{ 'form-group': true }}>
+        <div class={{ 'form-group': true, [this.class]: true }}>
           <label
             htmlFor={this.ID}
             class={{

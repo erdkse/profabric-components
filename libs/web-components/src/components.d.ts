@@ -22,17 +22,27 @@ export namespace Components {
     interface PfCheckbox {
         "block": boolean;
         "checked": boolean;
+        "class": string;
         "disabled": boolean;
         "mode": MODE;
         "switchable": boolean;
         "value": string;
+    }
+    interface PfImage {
+        "alt": string;
+        "class": string;
+        "fallbackSrc": string;
+        "height": number;
+        "loading": boolean;
+        "rounded": boolean;
+        "src": string;
+        "width": number;
     }
     interface PfSelect {
         "block": boolean;
         "class": string;
         "disabled": boolean;
         "label": string;
-        "mode": MODE;
         "options": Array<Option>;
         "size": SIZE;
         "type": string;
@@ -52,6 +62,12 @@ declare global {
         prototype: HTMLPfCheckboxElement;
         new (): HTMLPfCheckboxElement;
     };
+    interface HTMLPfImageElement extends Components.PfImage, HTMLStencilElement {
+    }
+    var HTMLPfImageElement: {
+        prototype: HTMLPfImageElement;
+        new (): HTMLPfImageElement;
+    };
     interface HTMLPfSelectElement extends Components.PfSelect, HTMLStencilElement {
     }
     var HTMLPfSelectElement: {
@@ -61,6 +77,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "pf-button": HTMLPfButtonElement;
         "pf-checkbox": HTMLPfCheckboxElement;
+        "pf-image": HTMLPfImageElement;
         "pf-select": HTMLPfSelectElement;
     }
 }
@@ -78,17 +95,27 @@ declare namespace LocalJSX {
     interface PfCheckbox {
         "block"?: boolean;
         "checked"?: boolean;
+        "class"?: string;
         "disabled"?: boolean;
         "mode"?: MODE;
         "switchable"?: boolean;
         "value"?: string;
+    }
+    interface PfImage {
+        "alt"?: string;
+        "class"?: string;
+        "fallbackSrc"?: string;
+        "height"?: number;
+        "loading"?: boolean;
+        "rounded"?: boolean;
+        "src"?: string;
+        "width"?: number;
     }
     interface PfSelect {
         "block"?: boolean;
         "class"?: string;
         "disabled"?: boolean;
         "label"?: string;
-        "mode"?: MODE;
         "options"?: Array<Option>;
         "size"?: SIZE;
         "type"?: string;
@@ -97,6 +124,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "pf-button": PfButton;
         "pf-checkbox": PfCheckbox;
+        "pf-image": PfImage;
         "pf-select": PfSelect;
     }
 }
@@ -106,6 +134,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "pf-button": LocalJSX.PfButton & JSXBase.HTMLAttributes<HTMLPfButtonElement>;
             "pf-checkbox": LocalJSX.PfCheckbox & JSXBase.HTMLAttributes<HTMLPfCheckboxElement>;
+            "pf-image": LocalJSX.PfImage & JSXBase.HTMLAttributes<HTMLPfImageElement>;
             "pf-select": LocalJSX.PfSelect & JSXBase.HTMLAttributes<HTMLPfSelectElement>;
         }
     }

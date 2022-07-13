@@ -1,0 +1,6 @@
+select {
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
