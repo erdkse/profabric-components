@@ -1,16 +1,14 @@
 import { Component, h, Host, Element, Prop, State, Watch } from '@stencil/core';
-import { loadingSvg } from '../../utils/utils';
+import { getObjectUrl, loadingSvg, noImageSvg } from '../../utils/utils';
 
 @Component({
   tag: 'pf-image',
   styleUrl: 'image.scss',
-  assetsDirs: ['../../../assets'],
   shadow: true,
 })
 export class Image {
   @Element() el: HTMLElement;
 
-  @Prop({ reflect: true, mutable: true }) class: string = '';
   @Prop({ reflect: true, mutable: true }) src: string = '';
   @Prop({ reflect: true, mutable: true }) fallbackSrc: string = '';
   @Prop({ reflect: true, mutable: true }) alt: string = '';
@@ -23,35 +21,32 @@ export class Image {
   @State() hasFallbackSrcfailed: boolean = false;
   @State() imageLoading: boolean = false;
 
-  @Watch('class')
-  watchClass(value: string) {
-    if (!value.includes('rounded') && this.rounded) {
-      this.class = `${this.class} rounded`;
-    }
-  }
-
   @Watch('loading')
   watchLoading(value) {
     this.imageLoading = value;
   }
 
   onImageLoad(event) {
-    console.log(event.target.src);
-    if (event.target.src === this.src) {
+    if (!this.hasSrcfailed && (!this.src || event.target.src === this.src)) {
       this.hasSrcfailed = false;
     }
-    if (event.target.src === this.fallbackSrc) {
+    if (
+      !this.hasFallbackSrcfailed &&
+      (!this.fallbackSrc || event.target.src === this.fallbackSrc)
+    ) {
       this.hasFallbackSrcfailed = false;
     }
     this.imageLoading = false;
   }
 
   onImageError(event) {
-    console.log(event.target.src);
-    if (event.target.src === this.src) {
+    if (!this.hasSrcfailed && (!this.src || event.target.src === this.src)) {
       this.hasSrcfailed = true;
     }
-    if (event.target.src === this.fallbackSrc) {
+    if (
+      !this.hasFallbackSrcfailed &&
+      (!this.fallbackSrc || event.target.src === this.fallbackSrc)
+    ) {
       this.hasFallbackSrcfailed = true;
     }
     this.imageLoading = false;
@@ -59,17 +54,11 @@ export class Image {
 
   componentWillLoad() {
     this.imageLoading = true;
-    this.watchClass(this.class);
-  }
-
-  getObjectUrl(svg: string) {
-    const blob = new Blob([svg], { type: 'image/svg+xml' });
-    return URL.createObjectURL(blob);
   }
 
   getImageUrl() {
     if (this.imageLoading || this.loading) {
-      return this.getObjectUrl(loadingSvg);
+      return getObjectUrl(loadingSvg);
     }
 
     if (!this.hasSrcfailed) {
@@ -77,20 +66,15 @@ export class Image {
     }
 
     if (!this.hasFallbackSrcfailed) {
-      return this.fallbackSrc || '';
+      return this.fallbackSrc;
     }
 
-    return '';
+    return getObjectUrl(noImageSvg);
   }
 
   render() {
     return (
-      <Host
-        style={{
-          width: `${this.width}px`,
-          height: `${this.height}px`,
-        }}
-      >
+      <Host>
         <img
           class={{ rounded: this.rounded }}
           style={{

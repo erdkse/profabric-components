@@ -29,7 +29,6 @@ export namespace Components {
     }
     interface PfImage {
         "alt": string;
-        "class": string;
         "fallbackSrc": string;
         "height": number;
         "loading": boolean;
@@ -101,7 +100,6 @@ declare namespace LocalJSX {
     }
     interface PfImage {
         "alt"?: string;
-        "class"?: string;
         "fallbackSrc"?: string;
         "height"?: number;
         "loading"?: boolean;

@@ -10,7 +10,6 @@
 | Property      | Attribute      | Description | Type      | Default     |
 | ------------- | -------------- | ----------- | --------- | ----------- |
 | `alt`         | `alt`          |             | `string`  | `''`        |
-| `class`       | `class`        |             | `string`  | `''`        |
 | `fallbackSrc` | `fallback-src` |             | `string`  | `''`        |
 | `height`      | `height`       |             | `number`  | `undefined` |
 | `loading`     | `loading`      |             | `boolean` | `false`     |

@@ -3,9 +3,17 @@
   margin: 0;
   padding: 0;
   background-color: transparent;
+
   img {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     object-fit: cover;
     box-shadow: var(--pf-box-shadow, none);
+    border-color: var(--pf-border-color, none);
+    border: var(--pf-border, none);
+    padding: var(--pf-padding, none);
+    margin: var(--pf-margin, none);
   }
 
   .rounded {
