@@ -13,6 +13,7 @@
 | `class`    | `class`    |             | `string`                          | `''`        |
 | `disabled` | `disabled` |             | `boolean`                         | `false`     |
 | `label`    | `label`    |             | `string`                          | `null`      |
+| `mode`     | `mode`     |             | `"bs4" \| "bs5"`                  | `undefined` |
 | `options`  | --         |             | `Option[]`                        | `[]`        |
 | `size`     | `size`     |             | `"default" \| "large" \| "small"` | `'default'` |
 | `type`     | `type`     |             | `string`                          | `undefined` |

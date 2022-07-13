@@ -43,6 +43,7 @@ export namespace Components {
         "class": string;
         "disabled": boolean;
         "label": string;
+        "mode": MODE;
         "options": Array<Option>;
         "size": SIZE;
         "type": string;
@@ -116,6 +117,7 @@ declare namespace LocalJSX {
         "class"?: string;
         "disabled"?: boolean;
         "label"?: string;
+        "mode"?: MODE;
         "options"?: Array<Option>;
         "size"?: SIZE;
         "type"?: string;

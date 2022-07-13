@@ -6,8 +6,11 @@ export type BUTTON_TYPES = 'submit' | 'button' | 'reset';
 
 @Component({
   tag: 'pf-checkbox',
-  styleUrl: 'style.scss',
-  shadow: false,
+  styleUrls: {
+    bs4: 'bs4.scss',
+    bs5: 'bs5.scss',
+  },
+  shadow: true,
 })
 export class Checkbox {
   @State() ID: string;

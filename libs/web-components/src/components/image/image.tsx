@@ -7,12 +7,13 @@ import {
   State,
   Watch,
 } from '@stencil/core';
+import { convertJSONtoCSS } from '../../utils/utils';
 
 @Component({
   tag: 'pf-image',
   styleUrl: 'image.scss',
   assetsDirs: ['assets'],
-  shadow: false,
+  shadow: true,
 })
 export class Image {
   @Prop({ reflect: true, mutable: true }) class: string = '';
@@ -77,9 +78,10 @@ export class Image {
 
   render() {
     return (
-      <Host>
+      <Host style={{ ...convertJSONtoCSS() }}>
         <img
           class={{ rounded: this.rounded, [this.class]: true }}
+          style={{ ...convertJSONtoCSS() }}
           src={this.getImageUrl()}
           alt={this.alt}
           width={this.width}
