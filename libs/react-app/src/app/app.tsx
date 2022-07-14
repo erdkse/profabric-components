@@ -1,4 +1,9 @@
-import { PfButton, PfCheckbox, PfSelect } from '@profabric/react-components';
+import {
+  PfButton,
+  PfCheckbox,
+  PfImage,
+  PfSelect,
+} from '@profabric/react-components';
 import { useState } from 'react';
 import _ from 'lodash';
 
@@ -137,6 +142,12 @@ export function App() {
             {checkbox.label}
           </PfCheckbox>
         ))}
+      </div>
+      <div className="row gx-2 mb-3">
+        <PfImage
+          width={120}
+          height={120}
+        />
       </div>
     </div>
   );

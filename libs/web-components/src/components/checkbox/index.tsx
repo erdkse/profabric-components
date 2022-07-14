@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Host, State, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, Host, State } from '@stencil/core';
 import { MODE } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -24,11 +24,6 @@ export class Checkbox {
   @Prop({ reflect: true, mutable: true }) checked: boolean = false;
   @Prop({ reflect: true, mutable: true }) value: string = '';
 
-  @Watch('mode')
-  watchMode(value) {
-    console.log('Checkbox', value);
-  }
-
   handleOnChange(e) {
     this.checked = e.target.checked;
     e.preventDefault();
@@ -38,7 +33,6 @@ export class Checkbox {
 
   componentWillLoad() {
     this.ID = uuidv4();
-    console.log('Checkbox', this.mode);
   }
 
   render() {

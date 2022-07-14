@@ -9,11 +9,10 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     object-fit: cover;
-    box-shadow: var(--pf-box-shadow, none);
-    border-color: var(--pf-border-color, none);
-    border: var(--pf-border, none);
-    padding: var(--pf-padding, none);
-    margin: var(--pf-margin, none);
+    box-shadow: var(--pf-box-shadow, inherit);
+    padding: var(--pf-padding, inherit);
+    margin: var(--pf-margin, inherit);
+    border: var(--pf-border, inherit);
   }
 
   .rounded {

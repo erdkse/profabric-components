@@ -1,9 +1,14 @@
 import { Component, h, Host, Element, Prop, State, Watch } from '@stencil/core';
-import { getObjectUrl, loadingSvg, noImageSvg } from '../../utils/utils';
+import {
+  decodeURL,
+  getObjectUrl,
+  loadingSvg,
+  noImageSvg,
+} from '../../utils/utils';
 
 @Component({
   tag: 'pf-image',
-  styleUrl: 'image.scss',
+  styleUrl: 'style.scss',
   shadow: true,
 })
 export class Image {
@@ -26,13 +31,42 @@ export class Image {
     this.imageLoading = value;
   }
 
+  @Watch('src')
+  watchSrc(value) {
+    if (value && value.charAt(0) !== '/') {
+      this.src = `/${value}`;
+    }
+
+    this.hasSrcfailed = false;
+    this.hasFallbackSrcfailed = false;
+    this.imageLoading = true;
+  }
+
+  @Watch('fallbackSrc')
+  watchFallbackSrc(value) {
+    if (value && value.charAt(0) !== '/') {
+      this.fallbackSrc = `/${value}`;
+    }
+    this.hasSrcfailed = false;
+    this.hasFallbackSrcfailed = false;
+    this.imageLoading = true;
+  }
+
   onImageLoad(event) {
-    if (!this.hasSrcfailed && (!this.src || event.target.src === this.src)) {
+    const imagePath = decodeURL(event.target.src).pathname;
+    const srcPath = decodeURL(this.src)
+      ? decodeURL(this.src).pathname
+      : this.src;
+    const fallbackSrcPath = decodeURL(this.fallbackSrc)
+      ? decodeURL(this.fallbackSrc).pathname
+      : this.fallbackSrc;
+
+    if (!this.hasSrcfailed && (!this.src || imagePath === srcPath)) {
       this.hasSrcfailed = false;
     }
     if (
       !this.hasFallbackSrcfailed &&
-      (!this.fallbackSrc || event.target.src === this.fallbackSrc)
+      (!this.fallbackSrc || imagePath === fallbackSrcPath)
     ) {
       this.hasFallbackSrcfailed = false;
     }
@@ -40,12 +74,19 @@ export class Image {
   }
 
   onImageError(event) {
-    if (!this.hasSrcfailed && (!this.src || event.target.src === this.src)) {
+    const imagePath = decodeURL(event.target.src).pathname;
+    const srcPath = decodeURL(this.src)
+      ? decodeURL(this.src).pathname
+      : this.src;
+    const fallbackSrcPath = decodeURL(this.fallbackSrc)
+      ? decodeURL(this.fallbackSrc).pathname
+      : this.fallbackSrc;
+    if (!this.hasSrcfailed && (!this.src || imagePath === srcPath)) {
       this.hasSrcfailed = true;
     }
     if (
       !this.hasFallbackSrcfailed &&
-      (!this.fallbackSrc || event.target.src === this.fallbackSrc)
+      (!this.fallbackSrc || imagePath === fallbackSrcPath)
     ) {
       this.hasFallbackSrcfailed = true;
     }
@@ -61,11 +102,11 @@ export class Image {
       return getObjectUrl(loadingSvg);
     }
 
-    if (!this.hasSrcfailed) {
+    if (this.src && !this.hasSrcfailed) {
       return this.src;
     }
 
-    if (!this.hasFallbackSrcfailed) {
+    if (this.fallbackSrc && !this.hasFallbackSrcfailed) {
       return this.fallbackSrc;
     }
 

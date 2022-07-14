@@ -22,6 +22,14 @@ export const getObjectUrl = (svg: string) => {
   return URL.createObjectURL(blob);
 };
 
+export const decodeURL = (string: string): URL => {
+  try {
+    return new URL(string);
+  } catch (error) {
+    return null;
+  }
+};
+
 // export const getGlobalStyles = () => {
 //   const style = document.createElement('style');
 //   const styleSheets = Object.values(document.styleSheets);
