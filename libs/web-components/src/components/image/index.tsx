@@ -33,7 +33,7 @@ export class Image {
 
   @Watch('src')
   watchSrc(value) {
-    if (value && value.charAt(0) !== '/') {
+    if (value && !decodeURL(value) && value.charAt(0) !== '/') {
       this.src = `/${value}`;
     }
 
@@ -44,7 +44,7 @@ export class Image {
 
   @Watch('fallbackSrc')
   watchFallbackSrc(value) {
-    if (value && value.charAt(0) !== '/') {
+    if (value && !decodeURL(value) && value.charAt(0) !== '/') {
       this.fallbackSrc = `/${value}`;
     }
     this.hasSrcfailed = false;
