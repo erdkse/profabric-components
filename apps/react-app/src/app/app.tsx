@@ -6,6 +6,7 @@ import {
 } from '@profabric/react-components';
 import { useState } from 'react';
 import _ from 'lodash';
+import { type } from 'os';
 
 const themes = [
   'primary',
@@ -26,18 +27,21 @@ export function App() {
       text: t.charAt(0).toUpperCase() + t.slice(1).toLowerCase(),
       loading: false,
       size: 'default',
+      type: 'submit',
     })),
     themes.map((t) => ({
       theme: t,
       text: t.charAt(0).toUpperCase() + t.slice(1).toLowerCase(),
       loading: false,
       size: 'small',
+      type: 'button',
     })),
     themes.map((t) => ({
       theme: t,
       text: t.charAt(0).toUpperCase() + t.slice(1).toLowerCase(),
       loading: false,
       size: 'large',
+      type: 'button',
     })),
   ]);
   const [selects] = useState([
@@ -108,6 +112,7 @@ export function App() {
             <PfButton
               key={c.theme}
               className="col"
+              type={c.type as any}
               block
               theme={c.theme as any}
               size={c.size as any}

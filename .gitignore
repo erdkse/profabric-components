@@ -43,3 +43,6 @@ packages/web-components-react/**/generated
 libs/web-components-angular/**/generated
 libs/web-components-react/**/generated
 republish.sh
+
+cypress
+cypress.config.ts

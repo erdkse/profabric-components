@@ -1,13 +1,14 @@
-import { getGreeting } from '../support/app.po';
-
-describe('react-app', () => {
+describe('pf-button', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome react-app');
+  it('should be loading on click', () => {
+    cy.get(':nth-child(2) > [theme="success"]').click();
+    cy.get(':nth-child(2) > [theme="success"]').should('have.attr', 'loading');
+  });
+  it('shouldnt be clickable on click when loading', () => {
+    cy.get(':nth-child(3) > [theme="success"]').click();
+    cy.get(':nth-child(3) > [theme="success"]')
+      .should('have.attr', 'loading')
+      .should('have.be', 'disabled');
   });
 });

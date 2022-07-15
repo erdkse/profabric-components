@@ -8,6 +8,8 @@
     "start:react": "concurrently \"nx build web-components --watch\" \"nx serve react-app\"",
     "start:angular": "concurrently \"nx build web-components --watch\" \"nx serve angular-app\"",
     "build": "nx build web-components && nx build web-components-angular && nx build web-components-react",
+    "test:e2e:react": "nx e2e react-app-e2e --watch",
+    "test:e2e:angular": "nx e2e angular-app-e2e --watch",
     "publish:web": "npm publish --folder ./dist/libs/web-components --access public",
     "publish:angular": "npm publish --folder ./dist/libs/web-components-angular --access public",
     "publish:react": "npm publish --folder ./dist/libs/web-components-react --access public"
@@ -46,7 +48,7 @@
     "@typescript-eslint/eslint-plugin": "5.30.5",
     "@typescript-eslint/parser": "5.30.5",
     "babel-jest": "27.5.1",
-    "concurrently": "7.2.1",
+    "concurrently": "7.2.2",
     "cypress": "9.1.0",
     "eslint": "8.15.0",
     "eslint-config-prettier": "8.1.0",
