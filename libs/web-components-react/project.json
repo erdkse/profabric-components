@@ -6,17 +6,13 @@
   "targets": {
     "build": {
       "executor": "@nrwl/web:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/web-components-react",
         "tsConfig": "libs/web-components-react/tsconfig.lib.json",
         "project": "libs/web-components-react/package.json",
         "entryFile": "libs/web-components-react/src/index.ts",
-        "external": [
-          "react/jsx-runtime"
-        ],
+        "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
@@ -30,20 +26,14 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/web-components-react/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["libs/web-components-react/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/web-components-react"
-      ],
+      "outputs": ["coverage/libs/web-components-react"],
       "options": {
         "jestConfig": "libs/web-components-react/jest.config.ts",
         "passWithNoTests": true

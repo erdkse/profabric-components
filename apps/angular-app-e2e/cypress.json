@@ -6,7 +6,7 @@
   "supportFile": "./src/support/index.ts",
   "pluginsFile": false,
   "video": true,
-  "videosFolder": "../../dist/cypress/packages/angular-app-e2e/videos",
-  "screenshotsFolder": "../../dist/cypress/packages/angular-app-e2e/screenshots",
+  "videosFolder": "../../dist/cypress/apps/angular-app-e2e/videos",
+  "screenshotsFolder": "../../dist/cypress/apps/angular-app-e2e/screenshots",
   "chromeWebSecurity": false
 }

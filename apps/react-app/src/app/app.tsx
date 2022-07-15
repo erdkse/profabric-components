@@ -144,7 +144,7 @@ export function App() {
         ))}
       </div>
       <div className="row gx-2 mb-3">
-        <PfImage width={120} height={120} />
+        <PfImage src="assets/default-profile.png" width={120} height={120} />
       </div>
     </div>
   );

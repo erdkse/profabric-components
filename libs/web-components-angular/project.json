@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/web-components-angular"
-      ],
+      "outputs": ["dist/libs/web-components-angular"],
       "options": {
         "project": "libs/web-components-angular/ng-package.json"
       },
@@ -23,9 +21,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/web-components-angular"
-      ],
+      "outputs": ["coverage/libs/web-components-angular"],
       "options": {
         "jestConfig": "libs/web-components-angular/jest.config.ts",
         "passWithNoTests": true
