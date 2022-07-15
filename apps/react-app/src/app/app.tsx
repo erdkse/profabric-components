@@ -64,6 +64,7 @@ export function App() {
       })),
       label: 'Large',
       size: 'large',
+      disabled: true,
     },
   ]);
   const [checkboxes] = useState([
@@ -128,6 +129,7 @@ export function App() {
             options={select.options}
             size={select.size as any}
             onChange={(e: any) => console.log(e.target.value)}
+            disabled={select.disabled}
           />
         ))}
       </div>

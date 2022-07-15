@@ -8,6 +8,12 @@ if (environment.production) {
   enableProdMode();
 }
 
+(window as any).PF = {
+  config: {
+    mode: 'bs5',
+  },
+};
+
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));
