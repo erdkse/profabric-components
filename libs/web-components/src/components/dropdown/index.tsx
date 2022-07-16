@@ -7,6 +7,6 @@ import { Component, h } from '@stencil/core';
 })
 export class PfDropdown {
   render() {
-    return <div>I'm dropdown component</div>;
+    return <div>I'm PfDropdown component</div>;
   }
 }

@@ -27,6 +27,8 @@ export namespace Components {
         "switchable": boolean;
         "value": string;
     }
+    interface PfDropdown {
+    }
     interface PfImage {
         "alt": string;
         "fallbackSrc": string;
@@ -35,6 +37,8 @@ export namespace Components {
         "rounded": boolean;
         "src": string;
         "width": number;
+    }
+    interface PfPhoneInput {
     }
     interface PfSelect {
         "block": boolean;
@@ -60,11 +64,23 @@ declare global {
         prototype: HTMLPfCheckboxElement;
         new (): HTMLPfCheckboxElement;
     };
+    interface HTMLPfDropdownElement extends Components.PfDropdown, HTMLStencilElement {
+    }
+    var HTMLPfDropdownElement: {
+        prototype: HTMLPfDropdownElement;
+        new (): HTMLPfDropdownElement;
+    };
     interface HTMLPfImageElement extends Components.PfImage, HTMLStencilElement {
     }
     var HTMLPfImageElement: {
         prototype: HTMLPfImageElement;
         new (): HTMLPfImageElement;
+    };
+    interface HTMLPfPhoneInputElement extends Components.PfPhoneInput, HTMLStencilElement {
+    }
+    var HTMLPfPhoneInputElement: {
+        prototype: HTMLPfPhoneInputElement;
+        new (): HTMLPfPhoneInputElement;
     };
     interface HTMLPfSelectElement extends Components.PfSelect, HTMLStencilElement {
     }
@@ -75,7 +91,9 @@ declare global {
     interface HTMLElementTagNameMap {
         "pf-button": HTMLPfButtonElement;
         "pf-checkbox": HTMLPfCheckboxElement;
+        "pf-dropdown": HTMLPfDropdownElement;
         "pf-image": HTMLPfImageElement;
+        "pf-phone-input": HTMLPfPhoneInputElement;
         "pf-select": HTMLPfSelectElement;
     }
 }
@@ -98,6 +116,8 @@ declare namespace LocalJSX {
         "switchable"?: boolean;
         "value"?: string;
     }
+    interface PfDropdown {
+    }
     interface PfImage {
         "alt"?: string;
         "fallbackSrc"?: string;
@@ -106,6 +126,8 @@ declare namespace LocalJSX {
         "rounded"?: boolean;
         "src"?: string;
         "width"?: number;
+    }
+    interface PfPhoneInput {
     }
     interface PfSelect {
         "block"?: boolean;
@@ -120,7 +142,9 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "pf-button": PfButton;
         "pf-checkbox": PfCheckbox;
+        "pf-dropdown": PfDropdown;
         "pf-image": PfImage;
+        "pf-phone-input": PfPhoneInput;
         "pf-select": PfSelect;
     }
 }
@@ -130,7 +154,9 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "pf-button": LocalJSX.PfButton & JSXBase.HTMLAttributes<HTMLPfButtonElement>;
             "pf-checkbox": LocalJSX.PfCheckbox & JSXBase.HTMLAttributes<HTMLPfCheckboxElement>;
+            "pf-dropdown": LocalJSX.PfDropdown & JSXBase.HTMLAttributes<HTMLPfDropdownElement>;
             "pf-image": LocalJSX.PfImage & JSXBase.HTMLAttributes<HTMLPfImageElement>;
+            "pf-phone-input": LocalJSX.PfPhoneInput & JSXBase.HTMLAttributes<HTMLPfPhoneInputElement>;
             "pf-select": LocalJSX.PfSelect & JSXBase.HTMLAttributes<HTMLPfSelectElement>;
         }
     }
