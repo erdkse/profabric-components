@@ -1,4 +1,13 @@
-import { Component, h, Host, Element, Prop, Listen } from '@stencil/core';
+import {
+  Component,
+  h,
+  Host,
+  Element,
+  Prop,
+  Listen,
+  Watch,
+  State,
+} from '@stencil/core';
 import { MODE } from '../../utils/types';
 
 @Component({
@@ -11,6 +20,12 @@ import { MODE } from '../../utils/types';
 })
 export class PfDropdown {
   @Element() el: HTMLElement;
+  private dropdownMenu?: HTMLElement;
+  @State() fixedStyles: { left: string; right: string } = {
+    left: 'inherit',
+    right: `0px`,
+  };
+  @Prop({ reflect: true, mutable: true }) class: string;
   @Prop({ reflect: true, mutable: true }) isOpen: boolean = false;
   @Prop({ reflect: true, mutable: true }) size: string = 'md';
   @Prop({ reflect: true, mutable: true }) mode: MODE;
@@ -23,7 +38,45 @@ export class PfDropdown {
     }
   }
 
-  componentWillLoad() {}
+  @Listen('resize', { target: 'window' })
+  listenBodyResize() {
+    this.calculateFixedStyles();
+  }
+
+  @Watch('class')
+  watchClass(value) {
+    if (!value.includes('dropdown')) {
+      this.class = `dropdown ${value}`;
+    }
+  }
+
+  calculateFixedStyles() {
+    if (this.dropdownMenu) {
+      const windowWidth = document.body.offsetWidth;
+      const offsetLeft = this.dropdownMenu.getBoundingClientRect().left;
+      const offsetWidth = this.dropdownMenu.offsetWidth;
+      const visiblePart = windowWidth - offsetLeft;
+
+      if (offsetLeft < 0) {
+        this.fixedStyles = {
+          left: 'inherit',
+          right: `${offsetLeft - 5}px`,
+        };
+        return;
+      } else if (visiblePart < offsetWidth) {
+        this.fixedStyles = { left: 'inherit', right: `0px` };
+        return;
+      }
+      this.fixedStyles = { left: 'inherit', right: `0px` };
+      return;
+    }
+    this.fixedStyles = { left: 'inherit', right: `0px` };
+    return;
+  }
+
+  componentWillLoad() {
+    this.calculateFixedStyles();
+  }
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;
@@ -31,20 +84,21 @@ export class PfDropdown {
 
   render() {
     return (
-      <Host class={{ 'nav-item': true }}>
-        <div class={{ dropdown: true }}>
-          <button
-            class="nav-link dropdown-toggle"
-            type="button"
-            onClick={this.toggleDropdown.bind(this)}
-          >
-            <slot name="button"></slot>
-          </button>
-          {this.isOpen && (
-            <div class="dropdown-menu show">
-              <slot name="menu"></slot>
-            </div>
-          )}
+      <Host>
+        <div class="dropdown-head" onClick={this.toggleDropdown.bind(this)}>
+          <slot name="button"></slot>
+          <i class={{ arrow: true, down: !this.isOpen, up: this.isOpen }}></i>
+        </div>
+        <div
+          ref={(el) => (this.dropdownMenu = el)}
+          class={{
+            'dropdown-menu': true,
+            'dropdown-menu-right': true,
+            show: this.isOpen,
+          }}
+          style={{ ...this.fixedStyles }}
+        >
+          <slot name="menu"></slot>
         </div>
       </Host>
     );

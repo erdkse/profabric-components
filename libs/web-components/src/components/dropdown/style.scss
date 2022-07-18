@@ -1,3 +1,47 @@
 :host {
-  display: block;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  min-width: 15rem;
+  padding: 0 0.25rem;
+
+  .dropdown-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    margin-top: 0.125rem;
+  }
+}
+
+.arrow {
+  border: solid rgba(0, 0, 0, 0.15);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  display: flex;
+  align-self: center;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
