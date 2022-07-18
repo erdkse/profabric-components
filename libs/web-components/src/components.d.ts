@@ -28,6 +28,9 @@ export namespace Components {
         "value": string;
     }
     interface PfDropdown {
+        "isOpen": boolean;
+        "mode": MODE;
+        "size": string;
     }
     interface PfImage {
         "alt": string;
@@ -117,6 +120,9 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface PfDropdown {
+        "isOpen"?: boolean;
+        "mode"?: MODE;
+        "size"?: string;
     }
     interface PfImage {
         "alt"?: string;
