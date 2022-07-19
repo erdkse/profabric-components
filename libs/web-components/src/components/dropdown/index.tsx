@@ -27,8 +27,8 @@ export class PfDropdown {
   };
   @Prop({ reflect: true, mutable: true }) class: string;
   @Prop({ reflect: true, mutable: true }) isOpen: boolean = false;
-  @Prop({ reflect: true, mutable: true }) size: string = 'md';
   @Prop({ reflect: true, mutable: true }) mode: MODE;
+  @Prop({ reflect: true, mutable: true }) hideArrow: boolean = false;
 
   @Listen('click', { target: 'window' })
   listenDocumentClick(event: Event) {
@@ -46,7 +46,7 @@ export class PfDropdown {
   @Watch('class')
   watchClass(value) {
     if (!value.includes('dropdown')) {
-      this.class = `dropdown dropup ${value}`;
+      this.class = `dropdown ${value}`;
     }
   }
 
@@ -87,13 +87,14 @@ export class PfDropdown {
       <Host>
         <div class="dropdown-head" onClick={this.toggleDropdown.bind(this)}>
           <slot name="button"></slot>
-          <i class={{ arrow: true, down: !this.isOpen, up: this.isOpen }}></i>
+          {!this.hideArrow && (
+            <i class={{ arrow: true, down: !this.isOpen, up: this.isOpen }}></i>
+          )}
         </div>
         <div
           ref={(el) => (this.dropdownMenu = el)}
           class={{
             'dropdown-menu': true,
-            'dropdown-menu-right': false,
             show: this.isOpen,
           }}
           style={{ ...this.fixedStyles }}

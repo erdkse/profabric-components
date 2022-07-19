@@ -14,7 +14,7 @@
     <script>
       window.PF = {
         config: {
-          mode: 'bs4',
+          mode: 'bs5',
         },
       };
     </script>
@@ -25,6 +25,11 @@
         --pf-border: 3px solid #adb5bd;
         --pf-padding: 3px;
         border: none;
+      }
+
+      pf-dropdown {
+        width: 15rem;
+        --pf-dropdown-min-width: 10rem;
       }
     </style>
   </head>
@@ -141,7 +146,7 @@
           <pf-checkbox>Checkbox</pf-checkbox>
         </div>
         <div class="col">
-          <pf-checkbox switchable>Disabled checked checkbox</pf-checkbox>
+          <pf-checkbox switchable>Switch</pf-checkbox>
         </div>
       </div>
       <div class="row mt-3">
@@ -179,7 +184,7 @@
       <div class="row mt-3">
         <h5>Dropdown</h5>
         <div class="col">
-          <pf-dropdown>
+          <pf-dropdown hide-arrow>
             <div slot="button">Hello</div>
             <div slot="menu">
               <a class="dropdown-item" href="#">Action</a>

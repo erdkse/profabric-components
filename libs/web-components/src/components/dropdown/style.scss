@@ -2,7 +2,6 @@
   display: inline-block;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
-  min-width: 15rem;
   padding: 0 0.25rem;
 
   .dropdown-head {
@@ -13,6 +12,9 @@
   }
 
   .dropdown-menu {
+    min-width: var(--pf-dropdown-min-width, inherit);
+    padding: var(--pf-dropdown-padding-y, inherit)
+      var(--pf-dropdown-padding-x, inherit);
   }
 }
 
