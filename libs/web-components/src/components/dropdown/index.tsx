@@ -46,7 +46,7 @@ export class PfDropdown {
   @Watch('class')
   watchClass(value) {
     if (!value.includes('dropdown')) {
-      this.class = `dropdown ${value}`;
+      this.class = `dropdown dropup ${value}`;
     }
   }
 
@@ -93,7 +93,7 @@ export class PfDropdown {
           ref={(el) => (this.dropdownMenu = el)}
           class={{
             'dropdown-menu': true,
-            'dropdown-menu-right': true,
+            'dropdown-menu-right': false,
             show: this.isOpen,
           }}
           style={{ ...this.fixedStyles }}
