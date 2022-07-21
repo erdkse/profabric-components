@@ -88,7 +88,10 @@ export class PfDropdown {
         <div class="dropdown-head" onClick={this.toggleDropdown.bind(this)}>
           <slot name="button"></slot>
           {!this.hideArrow && (
-            <i class={{ arrow: true, down: !this.isOpen, up: this.isOpen }}></i>
+            <i
+              class={{ arrow: true, down: !this.isOpen, up: this.isOpen }}
+              style={{ margin: this.isOpen ? '3px 3px 0 0' : '0 3px 3px 0' }}
+            ></i>
           )}
         </div>
         <div
